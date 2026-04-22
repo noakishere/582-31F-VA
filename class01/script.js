@@ -193,6 +193,7 @@ console.log("===========");
 console.log("with indexes loop: ");
 for (let i = 0; i < fruits.length; i++) {
   if (i == 1) {
+    // optional, if you want :D
     // here we have more control over indexes
     console.log(fruits[i]);
   }
@@ -205,3 +206,39 @@ while (index < fruits.length) {
   console.log(fruits[index]);
   index++;
 }
+
+/**
+ * find function
+ */
+
+const prices = [10, 20, 30, 40];
+console.log(prices);
+
+// find function finds the first occurence that
+// passes the condition
+const firstBigPrice = prices.find(function (price) {
+  return price > 25;
+});
+console.log("Find function: " + firstBigPrice);
+
+/**
+ * filter function
+ */
+// filter function creates an array of all elements
+// that pass the condition within the array.
+const expensivePrices = prices.filter(function (price) {
+  return price > 25;
+});
+console.log("Filter Function: ");
+console.log(expensivePrices);
+
+/**
+ * Map function
+ */
+// transforms each elements of the array and stores it
+// in a new array.
+const formattedPrices = prices.map(function (price) {
+  return "$" + price;
+});
+
+console.log(formattedPrices);
