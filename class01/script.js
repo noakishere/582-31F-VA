@@ -242,3 +242,21 @@ const formattedPrices = prices.map(function (price) {
 });
 
 console.log(formattedPrices);
+
+/**
+ * Objects
+ */
+
+console.log("-------------");
+
+const product = {
+  name: "Keyboard",
+  price: 49.99,
+  inStock: true,
+  describe: function () {
+    return this.name + " costs $" + this.price;
+  },
+};
+
+console.log(product.name);
+console.log(product.describe());
