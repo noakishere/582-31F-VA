@@ -27,6 +27,7 @@ const grades = [80, 90, 100];
 // we're not changing the variable,
 // we're just using a function of our array
 grades.push(75);
+grades[1]; // second element in the array
 console.log(grades);
 
 // JS object
@@ -143,6 +144,9 @@ document.getElementById("title").innerText = greet(fullName);
 
 /**
  * one responsibility per function!
+ * We want our functions to be modular: as in they're
+ * easy to test and REUSE.
+ * With single responisibility functions, we can attain that.
  */
 
 function calculateTotal(price, quantity) {
@@ -157,3 +161,47 @@ const totalPrice = calculateTotal(20.99, 3);
 
 console.log(totalPrice);
 console.log(formatPrice(totalPrice));
+
+/**
+ * Arrays and loops
+ */
+
+const fruits = ["apple", "banana", "orange", "cherry"];
+console.log(fruits);
+console.log(fruits[0]); // first element
+console.log(fruits.length); // length
+console.log(fruits[fruits.length - 1]); // last element
+
+// let's loop through an array!
+console.log("===========");
+console.log("Lambda: ");
+fruits.forEach((fruit) => console.log(fruit));
+
+console.log("===========");
+console.log("Callback fn: ");
+fruits.forEach(function (fruit) {
+  console.log(fruit);
+});
+
+console.log("===========");
+console.log("for loop: ");
+for (const fruit of fruits) {
+  console.log(fruit);
+}
+
+console.log("===========");
+console.log("with indexes loop: ");
+for (let i = 0; i < fruits.length; i++) {
+  if (i == 1) {
+    // here we have more control over indexes
+    console.log(fruits[i]);
+  }
+}
+
+console.log("===========");
+console.log("with while loop: ");
+let index = 0;
+while (index < fruits.length) {
+  console.log(fruits[index]);
+  index++;
+}
