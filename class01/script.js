@@ -50,4 +50,26 @@ console.log(student.name);
 
 /**
  * block scope!!!!
+ * Scope protects variables and prevents accidental misuse.
  */
+
+a = 5;
+if (a == 5) {
+  let message = "You guessed the number right!!!";
+  console.log(message);
+}
+
+// WARNING: this wouldn't work, because message is
+// in the conditional's scope and not accessible.
+// console.log(message);
+
+function showUser() {
+  const username = "Mina";
+  console.log(`${username} is logged in!`);
+}
+
+showUser();
+
+// WARNING: this wouldn't work, because username is
+// in the function's scope and not accessible.
+// console.log(username);
