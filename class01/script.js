@@ -73,3 +73,67 @@ showUser();
 // WARNING: this wouldn't work, because username is
 // in the function's scope and not accessible.
 // console.log(username);
+
+/**
+ * Mini check in
+ */
+
+// let or const?
+let page = 1; // page can change!
+const maxItems = 20; // maxItems could not change!!
+const categories = ["movies", "books"]; // categories also stay the same!
+
+/**
+ * Functions
+ */
+
+// we take an argument/parameter in this function
+function greetUser(name) {
+  // this is a void function!
+  console.log("Hello, " + name + " I hope you're good");
+}
+
+const name = "Nora";
+greetUser(name);
+
+function add(a, b) {
+  // this is a return function
+  return a + b;
+}
+
+const result = add(3, 5);
+console.log("result is: " + result);
+
+// a void function, executes whatever it's supposed to.
+// but it doesn't return any values
+// hence, it can't be assigned to a variable
+
+// let a = greetUser() doesn't work, since greetUser doens't
+//                                           return anything
+
+// BUT, a return function can be assigned to a variable.
+// BECAUSE, it returns a value!
+let number1 = add(10, 20);
+
+// MINI EXERCISE:
+const newName = "Jane";
+const lastName = "Doe";
+
+const fullName = getFullName(newName, lastName);
+
+// 1.
+// write a RETURN function that adds name
+// and lastName (with a space) and returns it to fullName
+function getFullName(name, lastname) {
+  let fullName = name + " " + lastName;
+  return fullName;
+}
+
+// 2.
+// write a function that greets the user calling their
+// fulName
+function greet(fullName) {
+  console.log("Hello " + fullName);
+}
+
+greet(fullName);
