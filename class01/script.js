@@ -134,6 +134,26 @@ function getFullName(name, lastname) {
 // fulName
 function greet(fullName) {
   console.log("Hello " + fullName);
+  return "Hello " + fullName;
+}
+greet(fullName);
+
+// DOM
+document.getElementById("title").innerText = greet(fullName);
+
+/**
+ * one responsibility per function!
+ */
+
+function calculateTotal(price, quantity) {
+  return price * quantity;
 }
 
-greet(fullName);
+function formatPrice(amount) {
+  return "$" + amount.toFixed(2);
+}
+
+const totalPrice = calculateTotal(20.99, 3);
+
+console.log(totalPrice);
+console.log(formatPrice(totalPrice));
