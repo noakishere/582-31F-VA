@@ -118,6 +118,32 @@ console.log(button);
 // we can have functions triggered by specific events.
 // we can do so by using addEventListener
 
+// in this case, our event is a click on our button.
+// button.addEventListener("click", () => {
+//   console.log("Button clicked.");
+//   output.textContent = "Oh hello there!";
+// });
+// the example above is also a continuation/callback!!
+
+// now let's read an input on click!
+const nameInput = document.getElementById("name-input");
+
 button.addEventListener("click", () => {
-  console.log("Button clicked.");
+  // we're reading the text input!
+  const name = nameInput.value.trim();
+
+  output.textContent = "Oh hello " + name;
+});
+
+/**
+ * input event
+ */
+
+const previewOutput = document.getElementById("preview-output");
+
+// typing/input as an event
+nameInput.addEventListener("input", () => {
+  console.log("typing..");
+
+  previewOutput.textContent = `Typing ${nameInput.value}`;
 });
