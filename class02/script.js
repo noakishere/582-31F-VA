@@ -63,3 +63,61 @@ doSomethingLater(() => {
  *  whatever you want to do.
  * });
  */
+
+// arrow function == lambda function!
+
+// concept of Continuation!
+
+// a continuation is the next piece of work the program
+// should do!
+
+// (it's often represented as a function to run later.)
+
+/**
+ * DOM Review!
+ */
+
+// both of these work!
+// const title = document.querySelector("#title");
+const title = document.getElementById("title");
+
+const description = document.querySelector(".description");
+
+const output = document.getElementById("output");
+
+console.log(title);
+console.log(description);
+console.log(description.textContent); // just the content, no html tag
+console.log(output);
+
+// to update DOM content!
+output.textContent = "I would like to have one red banana please.";
+
+const topics = ["Big Ben", "Statue of Liberty", "Chichen Itza"];
+
+const topicList = document.getElementById("topic-list");
+
+for (let topic of topics) {
+  // we create our element
+  const li = document.createElement("li");
+
+  // we add the list item as a text to our element
+  li.textContent = topic;
+
+  // add the list item to our 'ul'
+  topicList.appendChild(li);
+}
+
+/**
+ * Event Handling!
+ */
+
+const button = document.getElementById("my-button");
+console.log(button);
+
+// we can have functions triggered by specific events.
+// we can do so by using addEventListener
+
+button.addEventListener("click", () => {
+  console.log("Button clicked.");
+});
