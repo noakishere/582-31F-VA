@@ -127,6 +127,7 @@ console.log(button);
 
 // now let's read an input on click!
 const nameInput = document.getElementById("name-input");
+console.log(nameInput);
 
 button.addEventListener("click", () => {
   // we're reading the text input!
@@ -143,6 +144,7 @@ const previewOutput = document.getElementById("preview-output");
 
 // typing/input as an event
 nameInput.addEventListener("input", () => {
+  console.log(nameInput.textContent);
   console.log("typing..");
 
   previewOutput.textContent = `Typing ${nameInput.value}`;
