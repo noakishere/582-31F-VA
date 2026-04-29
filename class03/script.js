@@ -101,3 +101,64 @@ myPromise
 // A Promise is not magic :D
 // It is often wrapping asynchronous work.
 // such as a timer, or HTTP request, etc..
+
+// Delayed success or failure
+
+const success2 = false;
+// a compound of promise with a setTimeout inside of it
+const myPromise2 = new Promise((resolve, reject) => {
+  if (success2 == true) {
+    setTimeout(() => {
+      resolve("Data Loaded");
+    }, 1000);
+  }
+  //   } else {
+  //     setTimeout(() => {
+  //       reject("Data didn't load");
+  //     }, 1000);
+  //   }
+});
+
+// uncaught --> didn't catch ! (doesn't have a catch)
+
+// myPromise2
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((error) => {
+//     // catch here is useful to handle errors
+//     console.log(error);
+//   });
+
+// let's have a promise inside of a function
+function checkNumber(newNumber) {
+  const promise = new Promise((resolve, reject) => {
+    if (newNumber > 10) {
+      resolve("Number is greater than 10");
+    } else {
+      reject("Number is 10 or less");
+    }
+  });
+
+  return promise;
+}
+
+console.log("----------");
+let number = 10;
+let number2 = 15;
+
+checkNumber(number) // number 10
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+checkNumber(number2)
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
