@@ -62,6 +62,19 @@ Promise.resolve(5) // once resolved send to .then()
 
 // Let's try with our student
 
-loadUserData().then((user) => {
-  console.log(user);
-});
+output = document.getElementById("output");
+
+loadUserData()
+  .then((user) => {
+    // we extract the name
+    console.log(`Username : ${user.name}`);
+    return user.name;
+  })
+  .then((name) => {
+    // we turn it to uppercae
+    return name.toUpperCase();
+  })
+  .then((name) => {
+    // we print !
+    output.textContent = `Hello, ${name}!`;
+  });
