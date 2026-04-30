@@ -15,10 +15,10 @@ function checkPassword(entered_password) {
   const promise = new Promise((resolve, reject) => {
     if (correct_password == entered_password) {
       setTimeout(() => {
-        resolve("Login successfully.");
+        resolve("Login successfully."); // condition passed
       }, 2000);
     } else {
-      reject("password is not correct.");
+      reject("password is not correct."); // condition didn't pass
     }
   });
 
@@ -26,9 +26,11 @@ function checkPassword(entered_password) {
 }
 
 checkPassword("1234")
+  // if condition passed
   .then((result) => {
     console.log(result);
   })
+  // if condition didn't pass..
   .catch((error) => {
     console.log(error);
   });
