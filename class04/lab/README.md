@@ -122,7 +122,7 @@ Show:
 - semester
 - bio
 
-### Part 5 : Create a Promise to Load Course Data
+### Part 4 : Create a Promise to Load Course Data
 
 Write a function called `getCoursesData()`.
 
@@ -149,7 +149,7 @@ This function must:
 
 ---
 
-### Part 6 -- Render Course Data
+### Part 5 -- Render Course Data
 
 Write a function called `renderCourses(courses)`.
 
@@ -161,7 +161,7 @@ This function must:
 
 ---
 
-### Part 7 -- Connect the Load Courses Button
+### Part 6 -- Connect the Load Courses Button
 
 When the Load Courses button is clicked:
 
@@ -174,7 +174,7 @@ When the Load Courses button is clicked:
 
 ---
 
-### Part 8 -- Clear Button
+### Part 7 -- Clear Button
 
 When the Clear button is clicked:
 
