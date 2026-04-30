@@ -15,7 +15,6 @@ function loadUserData() {
       reject("Authentication Failed");
     }
   });
-
   return promise;
 }
 
@@ -77,4 +76,34 @@ loadUserData()
   .then((name) => {
     // we print !
     output.textContent = `Hello, ${name}!`;
+  })
+  .catch((error) => {
+    // catch is a good idea
+    // to make sure errors are handled.
+    output.textContent = error;
   });
+
+let data = 0; // global variable
+
+const success = true; // condition
+const myPromise = new Promise((resolve, reject) => {
+  if (success) {
+    resolve(20);
+  } else {
+    reject("Operation Failed");
+  }
+});
+
+// we consume the promise
+myPromise
+  .then((result) => {
+    console.log("I passed");
+    data = result;
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+console.log(data);
+// 0 -- Racing Issue
+// Asynchronous programming!
