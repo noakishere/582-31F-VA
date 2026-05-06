@@ -16,6 +16,15 @@ loadUserBtn.addEventListener("click", () => {
   userFetch
     .then((response) => {
       // convert Response object to JSON
+      console.log(response);
+
+      if (response.ok == false) {
+        // return an Error object
+        // goes automatically to catch
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
+      // return a Response object
       return response.json();
     })
     // update the output with user name
@@ -25,6 +34,9 @@ loadUserBtn.addEventListener("click", () => {
 
       status.textContent = "User Loaded Successfully.";
     })
+    // By DEFAULT:
+    // error here is only reserved for 500 level errors (Server errors)
+    // unless we throw an error.
     .catch((error) => {
       status.textContent = "Failed to load user.";
       console.log(error);
