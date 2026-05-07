@@ -83,4 +83,40 @@ console.log(jsonText);
 //                          COMMENTS
 //                          UNDEFINED
 
-// now let's do some PARSE
+// now let's do some parsing via parse()
+
+// JSON.parse()
+const studentJSON = '{"name":"Alice","program":"Web Dev","semester":4}';
+
+const parsedStudent = JSON.parse(studentJSON);
+console.log(parsedStudent);
+console.log(typeof studentJSON);
+console.log(typeof parsedStudent);
+
+// Let's try an array
+
+const arrayJSON = '["HTML","CSS","JavaScript"]';
+const topics = JSON.parse(arrayJSON);
+
+console.log(topics);
+
+// Parsed JSON can become arrays too ^^^
+
+/**
+ * Nested Object example
+ */
+
+const nestedJSON = `
+{
+    "name":"Alice",
+    "address":{
+        "city": "Montreal",
+        "postalCode": "H1A 1A1"
+    }
+}
+`;
+
+console.log("=========================");
+const parsedUser = JSON.parse(nestedJSON);
+console.log(parsedUser);
+console.log(parsedUser.address.city);
