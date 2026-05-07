@@ -200,3 +200,40 @@ console.log(bookJSON);
 // Reminder:
 // functions are not included in JSON
 // JSON is for data, not behaviour!
+
+/**
+ * JSON with fetch() and API responses
+ */
+
+fetch("https://jsonplaceholder.typicode.com/users/3")
+  .then((response) => {
+    return response.json(); // parse into JS object
+  })
+  .then((user) => {
+    console.log(user); // no longer JSON text
+    console.log(user.name);
+    return user;
+  })
+  .then((user) => {
+    // with stringify() we're back to JSON text
+    console.log(JSON.stringify(user, null, 2)); // pretty print!
+  });
+
+// By the time that we reach user:
+//      - it is no longer raw JSON text
+//      - it is already a JavaScript object (thanks to .json())
+
+/*
+// 1. what the server sends
+{
+    "name": "Clementine Bauch",
+    "email": "abc@abc.com"
+}
+
+// 2. what JS gets after response.json()
+{
+    name: "Clementine Bauch",
+    email: "abc@abc.com"
+}
+
+*/
