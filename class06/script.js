@@ -157,3 +157,46 @@ console.log(typeof objToJSON); // string
 // output: string
 
 console.log("=================");
+
+// same thing for an array
+const colors = ["RED", "GREEN", "BLUE"];
+const colorsJSON = JSON.stringify(colors);
+console.log(colorsJSON);
+
+/**
+ * Pretty Print JSON
+ * making the JSON text look nice with indentation, white space
+ * line breaks, etc. to make it easily readable.
+ */
+const prettyJSON = JSON.stringify(product, null, 2);
+console.log(prettyJSON);
+
+// purely cosmetics ^^
+// useful for readability and debugging
+
+/**
+ * IMPORTANT: limitations
+ */
+
+const book = {
+  name: "Petit Prince",
+  author: "Antoine de Saint-Exupéry",
+  memorise() {
+    // we can store a function inside of an object
+    console.log("read");
+  },
+  price: undefined,
+};
+
+console.log(book);
+
+book.memorise();
+
+// JSON completely ignores the method!
+// it also ignored the undefined value!
+const bookJSON = JSON.stringify(book, null, 2);
+console.log(bookJSON);
+
+// Reminder:
+// functions are not included in JSON
+// JSON is for data, not behaviour!
