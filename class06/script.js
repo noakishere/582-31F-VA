@@ -120,3 +120,40 @@ console.log("=========================");
 const parsedUser = JSON.parse(nestedJSON);
 console.log(parsedUser);
 console.log(parsedUser.address.city);
+
+const badJSON = "{name:'Alice'}";
+// ^ This would throw a syntax error, because
+// 1. single quote outside, double quote inside
+// 2. key needs to be within quotation marks.
+
+// JSON.parse(badJSON);
+
+/**
+ * JSON.stringify()
+ * converts a JS value into JSON text.
+ * This is serialization in the other direction.
+ *
+ * This would be useful when we want to convert our JS object
+ * and send it somewhere else as a JSON text.
+ */
+console.log("=================");
+// JS Object
+const product = {
+  name: "Keyboard",
+  category: "Accessories",
+  price: 20.99,
+};
+
+const objToJSON = JSON.stringify(product);
+console.log("JS Object: ");
+console.log(product); // JS Object
+console.log(typeof product); // object
+
+console.log("JSON text");
+console.log(objToJSON); // stringified JS object
+console.log(typeof objToJSON); // string
+
+// input: JS object
+// output: string
+
+console.log("=================");
