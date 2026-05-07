@@ -33,3 +33,54 @@ let obj = {
 
 // why do we use it?
 //  it is readable --- it works well across systems -- it is widely used in web APIs
+
+// JS object vs JSON
+
+// JS object -->
+const student = {
+  name: "Alice",
+  program: "Web Dev",
+  semester: 4,
+};
+
+console.log(student);
+
+// JSON text
+const jsonText = '{"name":"Alice","program":"Web Dev","semester":4}';
+
+console.log(jsonText);
+
+// ^^ these are not the same thing. 1st is a JS Object, second is a string containing
+//    JSON text.
+
+// comparison -->
+
+// JS object:
+// - lives as a JS value
+// - can have methods
+// - keys do not need quotes
+// - uses JS syntax rules
+
+// JSON:
+// - is plain text
+// - used for exchanging data
+// - keys must use double quotes
+// - must follow string JSON syntax
+
+/**
+ * Valid JSON types
+ */
+
+// - string
+// - number (int, float, etc.)
+// - boolean
+// - null
+// - object
+// - array
+
+// IMPORTANT : JSON DOES NOT SUPPORT
+//                          FUNCTIONS
+//                          COMMENTS
+//                          UNDEFINED
+
+// now let's do some PARSE
