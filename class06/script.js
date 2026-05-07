@@ -190,7 +190,7 @@ const book = {
 
 console.log(book);
 
-book.memorise();
+book.memorise(); // invoke/call object's function
 
 // JSON completely ignores the method!
 // it also ignored the undefined value!
