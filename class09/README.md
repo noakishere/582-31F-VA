@@ -387,7 +387,3 @@ If a function is not exported, it cannot be imported elsewhere.
 ## 4. Trying to use browser modules like normal scripts
 
 Modules have their own scope and behave differently from plain script files.
-
-## 5. Mixing responsibilities
-
-Encourage students not to put everything back into `app.js`.
