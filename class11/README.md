@@ -1,14 +1,3 @@
-Absolutely — `Item` is a bit dry for inheritance. Using **Animal** and **Car/Vehicle** is much clearer.
-
-I’d use them as **two separate inheritance examples**:
-
-- **Animal → Dog / Cat** for the first, simpler conceptual example
-- **Vehicle → Car / ElectricCar** for the second, more applied example
-
-Here’s a revised **student handout** using those instead.
-
----
-
 # Web Interface Programming 2 — Async Session
 
 ## Student Handout: Inheritance in JavaScript
