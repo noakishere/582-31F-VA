@@ -84,6 +84,8 @@ console.log(product1.price);
 // console.log(product1.price);
 
 class User {
+  static role = "guest";
+
   constructor(username) {
     this.username = username;
   }
@@ -101,7 +103,8 @@ class User {
 }
 
 const u1 = new User("    t-rex     ");
-console.log(u1.username);
+console.log(u1.username); // object property
+console.log(User.role); // static property
 
 class Bug {
   constructor(name) {
@@ -121,3 +124,74 @@ class Bug {
 
 bug = new Bug("hi"); // throws an error if there are no setters
 console.log(bug.name);
+
+/**
+ * Static properties and methods
+ */
+
+// static members belong to the class itself, and not to
+// individual objects.
+
+// they're used like : ClassName.member
+//  and NOT: instance.member
+
+// static metohds and properties help us to use
+// in different situations.
+// mostly used as helper functions!
+class MathHelper {
+  // add belongs to the class, not to any one MathHelper object;
+  static add(a, b) {
+    return a + b;
+  }
+}
+
+result = MathHelper.add(2, 3);
+console.log(result);
+
+//                      ::::PAY ATTENTION:::::
+// const helper = new MathHelper();
+// helper.add(2, 3); // this would throw an error, because
+//                   the method belongs to the class.
+
+class Student {
+  static counter = 0;
+
+  constructor(name) {
+    this.name = name; // this. belongs to the object
+    // this.counter += 1; // this would only update once!
+    Student.counter += 1; // Student. belongs to class
+  }
+}
+
+const s1 = new Student("Jane");
+const s2 = new Student("Joe");
+
+console.log(`We have a total of ${Student.counter} students`);
+
+class Product2 {
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+
+  static isValidPrice(value) {
+    return typeof value === "number" && value >= 0;
+  }
+
+  set price(value) {
+    if (Product2.isValidPrice(value)) {
+      this.__price = value;
+    } else {
+      throw new Error("Wrong price");
+    }
+  }
+
+  get price() {
+    return this.__price;
+  }
+}
+
+new_product = new Product2("Mouse", 25);
+// new_product2 = new Product2("Laptop", -25);
+
+console.log(new_product.price);
