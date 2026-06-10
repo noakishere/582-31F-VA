@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Retro Fighters Cup",
+    "game": "Street Fighter II",
+    "entryFee": 15,
+    "maxPlayers": 16,
+    "registeredPlayers": 12,
+    "status": "open"
+  },
+  {
+    "id": 2,
+    "name": "Pixel Kart Clash",
+    "game": "Super Mario Kart",
+    "entryFee": 10,
+    "maxPlayers": 8,
+    "registeredPlayers": 8,
+    "status": "full"
+  },
+  {
+    "id": 3,
+    "name": "Galactic Showdown",
+    "game": "Galaga",
+    "entryFee": 12,
+    "maxPlayers": 20,
+    "registeredPlayers": 5,
+    "status": "open"
+  },
+  {
+    "id": 4,
+    "name": "Puzzle Masters Arena",
+    "game": "Tetris",
+    "entryFee": 8,
+    "maxPlayers": 10,
+    "registeredPlayers": 7,
+    "status": "open"
+  },
+  {
+    "id": 5,
+    "name": "Arcade Legends Final",
+    "game": "Pac-Man",
+    "entryFee": 20,
+    "maxPlayers": 12,
+    "registeredPlayers": 12,
+    "status": "full"
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "id": 101,
+    "tournamentId": 1,
+    "playerName": "Ava Chen",
+    "gamerTag": "PixelStorm",
+    "ticketType": "standard",
+    "status": "confirmed"
+  },
+  {
+    "id": 102,
+    "tournamentId": 1,
+    "playerName": "Leo Martin",
+    "gamerTag": "DragonKick",
+    "ticketType": "vip",
+    "status": "confirmed"
+  },
+  {
+    "id": 103,
+    "tournamentId": 1,
+    "playerName": "Sara Kim",
+    "gamerTag": "ComboQueen",
+    "ticketType": "standard",
+    "status": "pending"
+  },
+  {
+    "id": 104,
+    "tournamentId": 1,
+    "playerName": "Noah Patel",
+    "gamerTag": "TurboNova",
+    "ticketType": "standard",
+    "status": "confirmed"
+  },
+
+  {
+    "id": 201,
+    "tournamentId": 2,
+    "playerName": "Ethan Ross",
+    "gamerTag": "KartKing",
+    "ticketType": "standard",
+    "status": "confirmed"
+  },
+  {
+    "id": 202,
+    "tournamentId": 2,
+    "playerName": "Mia Lopez",
+    "gamerTag": "RainbowRacer",
+    "ticketType": "vip",
+    "status": "confirmed"
+  },
+  {
+    "id": 203,
+    "tournamentId": 2,
+    "playerName": "Jay Turner",
+    "gamerTag": "BlueShell",
+    "ticketType": "standard",
+    "status": "confirmed"
+  },
+
+  {
+    "id": 301,
+    "tournamentId": 3,
+    "playerName": "Lina Park",
+    "gamerTag": "StarBlaster",
+    "ticketType": "standard",
+    "status": "confirmed"
+  },
+  {
+    "id": 302,
+    "tournamentId": 3,
+    "playerName": "Owen Diaz",
+    "gamerTag": "PixelPilot",
+    "ticketType": "standard",
+    "status": "pending"
+  },
+
+  {
+    "id": 401,
+    "tournamentId": 4,
+    "playerName": "Mason White",
+    "gamerTag": "BlockDrop",
+    "ticketType": "standard",
+    "status": "confirmed"
+  },
+  {
+    "id": 402,
+    "tournamentId": 4,
+    "playerName": "Emma Brooks",
+    "gamerTag": "LineClear",
+    "ticketType": "vip",
+    "status": "confirmed"
+  },
+  {
+    "id": 403,
+    "tournamentId": 4,
+    "playerName": "Chloe Reed",
+    "gamerTag": "TetroStar",
+    "ticketType": "standard",
+    "status": "cancelled"
+  },
+
+  {
+    "id": 501,
+    "tournamentId": 5,
+    "playerName": "Lucas Green",
+    "gamerTag": "MazeRunner",
+    "ticketType": "vip",
+    "status": "confirmed"
+  },
+  {
+    "id": 502,
+    "tournamentId": 5,
+    "playerName": "Isla Moore",
+    "gamerTag": "GhostHunter",
+    "ticketType": "standard",
+    "status": "confirmed"
+  },
+  {
+    "id": 503,
+    "tournamentId": 5,
+    "playerName": "Zoe Bennett",
+    "gamerTag": "CherryRush",
+    "ticketType": "standard",
+    "status": "pending"
+  }
+]
