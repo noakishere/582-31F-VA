@@ -4,11 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Elements Demo</title>
+
+    <style>
+      user-card h2 {
+        color: green;
+      }
+
+      user-card p {
+        color: red;
+      }
+
+      user-card {
+        font-size: larger;
+      }
+    </style>
   </head>
   <body>
     <h1>Custom Elements Demo</h1>
 
     <hello-box></hello-box>
+
+    <user-card name="Jane" role="Forward"></user-card>
+    <user-card name="John" role="Defense"></user-card>
 
     <script src="script.js"></script>
   </body>

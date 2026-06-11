@@ -28,6 +28,10 @@
 // 3. use the new tag in HTML
 
 class HelloBox extends HTMLElement {
+  // This means the class is a custom HTML Elements
+
+  // This is a lifecycle method, it runs when the element is inserted into the
+  // document.
   connectedCallback() {
     this.innerHTML = `
         <div>
@@ -38,4 +42,41 @@ class HelloBox extends HTMLElement {
   }
 }
 
+// This connects the tag name with the class.
 customElements.define("hello-box", HelloBox);
+// ^^^ now the browser knows what to do when it sees that tag.
+
+// why connectedCallback matters?
+
+// render content
+// read attributes
+// initialize UI behaviour.
+
+// you don't need to overload with ever lifecycle method.
+
+/**
+ // let's make it Dynamic!
+ * 
+ */
+
+class UserCard extends HTMLElement {
+  connectedCallback() {
+    // getAttribute reads the value from the HTML tag.
+    const name = this.getAttribute("name"); // the data inside the component
+    const role = this.getAttribute("role"); // the data inside the component
+
+    // HTML provides the input, and the custom element renders
+    // based on that input.
+
+    this.innerHTML = `
+        <div>
+            <h2>Name: ${name} </h2>
+            <p>Role: ${role} </p>
+        </div>
+        `;
+  }
+}
+
+customElements.define("user-card", UserCard);
+
+// A custom element becomes much more useful when it is not hard-coded.
