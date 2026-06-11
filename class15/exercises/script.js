@@ -7,10 +7,31 @@
 
 // render it on your html file.
 
+class MovieCard extends HTMLElement {
+  connectedCallback() {
+    const title = this.getAttribute("title");
+    const year = this.getAttribute("year");
+    const rating = this.getAttribute("rating");
+
+    this.innerHTML = `
+        <div>
+            <h2>${title} (${year})</h2>
+            <p><strong>rating:</strong> ${rating}</p>
+        </div>
+        `;
+  }
+}
+
+customElements.define("movie-card", MovieCard);
+
 // 2. refactor a basic custom element
 
 class HelloBox extends HTMLElement {
   connectedCallback() {
+    this.render();
+  }
+
+  render() {
     this.innerHTML = `
       <div>
         <h2>Hello!</h2>
@@ -35,3 +56,48 @@ customElements.define("hello-box", HelloBox);
 //      5. renderHeading()
 //      6. renderBody()
 //      5. render()
+
+class GameCard extends HTMLElement {
+  connectedCallback() {
+    this.render();
+  }
+
+  getTitle() {
+    return this.getAttribute("title");
+  }
+  getRating() {
+    return this.getAttribute("rating");
+  }
+  getYear() {
+    return this.getAttribute("year");
+  }
+
+  ratingFormatter(rating) {
+    return `${rating} / 5`;
+  }
+
+  renderHeading() {
+    return `<h2>Game Name: ${this.getTitle()}</h2>`;
+  }
+
+  renderBody() {
+    const year = this.getYear();
+    const rating = this.getRating();
+
+    return `
+    <p>Year: ${year}</p>
+    <p>Rating: ${this.ratingFormatter(rating)}
+    `;
+  }
+
+  render() {
+    this.innerHTML = `
+    <div>
+        ${this.renderHeading()}
+        ${this.renderBody()}
+    </div>
+    `;
+  }
+}
+
+customElements.define("game-card", GameCard);
