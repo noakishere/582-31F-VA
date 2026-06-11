@@ -32,4 +32,6 @@ customElements.define("hello-box", HelloBox);
 //      3. getYear()
 //      4. getRating()
 //      4.b formats Rating  -- ratingFormatter() X/5
-//      5. render
+//      5. renderHeading()
+//      6. renderBody()
+//      5. render()
