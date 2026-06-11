@@ -80,3 +80,32 @@ class UserCard extends HTMLElement {
 customElements.define("user-card", UserCard);
 
 // A custom element becomes much more useful when it is not hard-coded.
+
+// 1. tell JS that we're creating a custom element
+class GameCard extends HTMLElement {
+  // 2. The first thing that executes when the element is used
+  connectedCallback() {
+    // 3. Get the attributes
+    // we want to get the HTML input for Title, Genre, Players
+    const title = this.getAttribute("title");
+    const genre = this.getAttribute("genre");
+    const players = this.getAttribute("players");
+
+    // 4. display the DOM
+    this.innerHTML = `
+    <div>
+        <h1>${title}</h1>
+        <h6>${genre}</h6>
+        <h7>${players}</h7>
+    </div>
+    `;
+  }
+}
+
+// 5. define the class with the tag name
+customElements.define("game-card", GameCard);
+
+// We're getting reusable UI!
+//  clean HTML usage
+// we're thinking about components, and a better architecture of our code
+//              repeated card structures are now becoming custom elements.
