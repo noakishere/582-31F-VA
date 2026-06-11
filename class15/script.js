@@ -109,3 +109,32 @@ customElements.define("game-card", GameCard);
 //  clean HTML usage
 // we're thinking about components, and a better architecture of our code
 //              repeated card structures are now becoming custom elements.
+
+/**
+ * Improving rendering with helper methods
+ */
+
+// elements classes can still have internal methods!
+// rendering logic can be much more organized in this way
+class CourseName extends HTMLElement {
+  connectedCallback() {
+    this.render(); // calls the internal render function
+  }
+
+  // internal function
+  render() {
+    const title = this.getAttribute("title");
+    const credits = this.getAttribute("credits");
+    const instructor = this.getAttribute("instructor");
+
+    this.innerHTML = `
+    <article>
+        <h2>${title}</h2>
+        <p><strong>Credits: </strong> ${credits}</p>
+        <p><strong>Instructor: </strong> ${instructor}</p>
+    </article>
+    `;
+  }
+}
+
+customElements.define("course-name", CourseName);
