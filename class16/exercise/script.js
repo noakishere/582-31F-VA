@@ -37,6 +37,15 @@ class MovieBox extends HTMLElement {
     this.render();
   }
 
+  getMovieData() {
+    return {
+      title: this.getAttribute("title") || "Unknown Movie",
+      year: this.getAttribute("year") || "N\A",
+      director: this.getAttribute("director") || "Unknown Director",
+      poster: this.getAttribute("poster-url") || "",
+    };
+  }
+
   getTitle() {
     return this.getAttribute("title");
   }
@@ -83,10 +92,15 @@ class MovieBox extends HTMLElement {
 
   render() {
     const movieBox = this.attachShadow({ mode: "open" });
+
+    // you can use this too!
+    const movieData = this.getMovieData();
+    console.log(movieData);
+
     movieBox.innerHTML = `
     ${this.renderStyle()}
     <div class="movie-card">
-    <img src="${this.getPosterURL()}">
+    <img src="${movieData.poster}">
         <div class="card-header">
         <h2>${this.getTitle()}</h2>
             <div class="entry">
