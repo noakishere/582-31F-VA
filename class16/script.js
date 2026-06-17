@@ -145,10 +145,12 @@ customElements.define("player-card", PlayerCard);
  */
 
 class PaintingCard extends HTMLElement {
+  // keep this function short
   connectedCallback() {
     this.render();
   }
 
+  // read data in getters
   getArtist() {
     return this.getAttribute("artist") || "Unknown";
   }
@@ -157,11 +159,9 @@ class PaintingCard extends HTMLElement {
     return this.getAttribute("image-url") || "";
   }
 
-  render() {
-    const shadow = this.attachShadow({ mode: "open" });
-
-    shadow.innerHTML = `
-        <style>
+  renderStyle() {
+    return `
+    <style>
          .card {
             border: 1px solid #333;
             padding: 1rem;
@@ -176,6 +176,15 @@ class PaintingCard extends HTMLElement {
             max-height: 380px;
          }
         </style>
+    `;
+  }
+
+  // handles the output
+  render() {
+    const shadow = this.attachShadow({ mode: "open" });
+
+    shadow.innerHTML = `
+        ${this.renderStyle()}
 
         <div class="card">
             <h2>${this.getArtist()}</h2>
