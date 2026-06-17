@@ -8,10 +8,10 @@
  *
  *  use Shadow DOM
  *  accept attributes:
- *      title
- *      year
- *      director
- *      poster
+ *      title (h2)
+ *      year (p)
+ *      director (p)
+ *      poster (img)
  *
  * render a styled card inside the shadow root
  *
