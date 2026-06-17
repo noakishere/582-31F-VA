@@ -139,3 +139,50 @@ class PlayerCard extends HTMLElement {
   }
 }
 customElements.define("player-card", PlayerCard);
+
+/**
+ * Organizing Components with helper methods
+ */
+
+class PaintingCard extends HTMLElement {
+  connectedCallback() {
+    this.render();
+  }
+
+  getArtist() {
+    return this.getAttribute("artist") || "Unknown";
+  }
+
+  getImgURL() {
+    return this.getAttribute("image-url") || "";
+  }
+
+  render() {
+    const shadow = this.attachShadow({ mode: "open" });
+
+    shadow.innerHTML = `
+        <style>
+         .card {
+            border: 1px solid #333;
+            padding: 1rem;
+            background: #4e4e4e;
+            color: white;
+            border-radius: 8px;
+            margin-top: 1rem;
+         }
+
+         img {
+            max-width: 640px;
+            max-height: 380px;
+         }
+        </style>
+
+        <div class="card">
+            <h2>${this.getArtist()}</h2>
+            <img src="${this.getImgURL()}">
+        </div>
+        `;
+  }
+}
+
+customElements.define("painting-card", PaintingCard);
