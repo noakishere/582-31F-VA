@@ -100,3 +100,42 @@ class FancyCard extends HTMLElement {
   }
 }
 customElements.define("fancy-card", FancyCard);
+
+/**
+ * Using attributes with Shadow DOM
+ */
+
+class PlayerCard extends HTMLElement {
+  connectedCallback() {
+    const shadow = this.attachShadow({ mode: "open" });
+
+    const name = this.getAttribute("name");
+    const goals = this.getAttribute("goals");
+    const imgUrl = this.getAttribute("image-url");
+
+    shadow.innerHTML = `
+    <style>
+     .card {
+        border: 1px solid #333;
+        padding: 1rem; 
+        margin-top: 1rem;
+        background: #111;
+        color: white;
+        border-radius: 8px;
+     }
+
+     img {
+      border: 1px;
+      border-radius: 95%;
+     }
+    </style>
+    
+    <div class="card">
+        <h2>${name}</h2>
+        <p>Goals: ${goals}</h2>
+        <img src="${imgUrl}">
+    </div>
+    `;
+  }
+}
+customElements.define("player-card", PlayerCard);
