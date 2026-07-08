@@ -37,3 +37,43 @@ for (let i = 0; i < 2; i++) {
   const clone = template.content.cloneNode(true);
   output.appendChild(clone);
 }
+
+// Templates are designed specifically for reusability.
+
+/**
+ * Dynamic template population
+ */
+
+// DATA
+const teams = [
+  { name: "Argentina", group: "A", points: 6 },
+  { name: "France", group: "B", points: 4 },
+  { name: "Japan", group: "D", points: 5 },
+];
+
+// DOM
+const teamsContainer = document.getElementById("teams-container");
+
+// Helper function
+function createTeamCard(team) {
+  // Get the template DOM
+  const teamTemplate = document.getElementById("team-template");
+
+  // Get the template clone
+  const clone = teamTemplate.content.cloneNode(true);
+
+  // Get the element's textContent to adjust dynamically
+  clone.querySelector(".team-name").textContent = team.name;
+  clone.querySelector(".team-group").textContent = `Group: ${team.group}`;
+  clone.querySelector(".team-points").textContent = `Points: ${team.points}`;
+
+  return clone;
+}
+
+// Render our data in HTML
+teams.forEach((team) => {
+  const newTeam = createTeamCard(team);
+
+  // add to div
+  teamsContainer.appendChild(newTeam);
+});
