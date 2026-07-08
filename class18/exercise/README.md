@@ -1,14 +1,12 @@
 ## in-class exercise
 
-Create a page that displays a list of football players using a template inside a custom element with Shadow DOM.
+Create a page that displays a list of football players using a template inside.
 
 ### Requirements:
 
 - one `<template>`
 - one container
 - one array of player objects
-- one custom element
-- Shadow DOM
 - one helper function that creates and fills each player component
 
 #### Data example:
