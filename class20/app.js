@@ -43,6 +43,8 @@ import { getEvents } from "./api.js";
 import { Event } from "./Event.js";
 import { renderLoading, renderEmpty, renderError, renderEvents } from "./ui.js";
 
+console.log("app.js loaded");
+
 const loadButton = document.getElementById("load-events");
 const genreFilter = document.getElementById("genre-filter");
 
@@ -50,16 +52,22 @@ const genreFilter = document.getElementById("genre-filter");
 let events = [];
 
 async function loadEvents() {
+  // state flow:
+  // loading state
   renderLoading();
 
+  // disable controls
+  // to prevent double clicking
   loadButton.disabled = true;
   genreFilter.disabled = true;
 
   try {
+    // retrieve the raw data
     const rawEvents = await getEvents();
 
     console.log("Raw API data: ", rawEvents);
 
+    // Convert data to class instances!
     events = rawEvents.map(
       (item) =>
         new Event(
@@ -75,14 +83,17 @@ async function loadEvents() {
 
     console.table(events);
 
+    // final state: render the result!
     renderEvents(events);
 
     genreFilter.disabled = false;
+    // catch the error
   } catch (error) {
     console.error("Failed to load events: ", error);
 
     renderError(error.message);
   } finally {
+    // restore the button
     loadButton.disabled = false;
   }
 }
@@ -90,3 +101,24 @@ async function loadEvents() {
 loadButton.addEventListener("click", () => {
   loadEvents();
 });
+
+// why is there no new fetch involved?
+// because when we load, data is stored in our app
+function handleGenreFilter() {
+  const selectedGenre = genreFilter.value;
+
+  if (selectedGenre === "") {
+    renderEvents(events);
+    return;
+  }
+
+  // filtering is happening locally!
+  // let events has all the data!
+  const filteredEvents = events.filter(
+    (event) => event.genre === selectedGenre,
+  );
+
+  renderEvents(filteredEvents);
+}
+
+genreFilter.addEventListener("change", handleGenreFilter);
