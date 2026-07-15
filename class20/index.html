@@ -2,10 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Music Events Dashboard</title>
   </head>
+
   <body>
-    <script src="app.js"></script>
+    <header>
+      <h1>Music Events Dashboard</h1>
+    </header>
+
+    <main>
+      <button id="load-events" type="button">Load Events</button>
+
+      <label for="genre-filter"> Filter by genre </label>
+
+      <select id="genre-filter" disabled>
+        <option value="">All genres</option>
+
+        <option value="Electronic">Electronic</option>
+
+        <option value="Experimental">Experimental</option>
+
+        <option value="Hip-Hop">Hip-Hop</option>
+      </select>
+
+      <p id="status">Select “Load Events” to begin.</p>
+
+      <p>
+        <strong>Visible events:</strong>
+        <span id="event-count">0</span>
+      </p>
+
+      <section id="events"></section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

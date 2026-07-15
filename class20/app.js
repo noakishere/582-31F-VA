@@ -1,37 +1,39 @@
-// API Integration, Modular Code Organization, Debugging Support
+// // Loading DOM
+// const button = document.getElementById("load-events");
+// const container = document.getElementById("events");
 
-// const response = await fetch(
-//     "file.json"
-// );
+// // Adding event listener to button
+// button.addEventListener("click", async () => {
+//   // fetching data
+//   const response = await fetch("events.json");
 
-// const data = await response.json();
+//   // parsing data
+//   const events = await response.json();
 
-// console.log(data);
+//   // populating DOM elements
+//   container.innerHTML = "";
 
-// export function renderThings(things) {
-//     // render..
-// }
+//   // iterating through data
+//   events.forEach((event) => {
+//     const article = document.createElement("article");
 
-// ^ this is not organized!
+//     article.innerHTML = `<h2>${event.title}</h2>
+//                             <p>${event.artist}</p>
+//                             `;
 
-// what does async function do? it takes it own thread and runs the code (in parallel)
-// what does async function return? (object type) a promise
-async function loadEvents() {
-  // what does fetch return here? a promise (which is not the final JSON data)
-  // why do we use await? (pauses the async function until the promise is settled)
-  const response = await fetch("events.json");
+//     container.appendChild(article);
+//   });
+// });
 
-  // does fetch() reject for every HTTP error? No, fetch also provides a Response object!
+// This code works! what's the main problem?
+// working code is not automatically well-organized code!
 
-  // we have to check the Response object, to verify and reject
-  if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`);
-  }
+// 4 application layers are:
 
-  // what does response.json() return? Also returns a promise
-  const data = await response.json();
+// 1. something that retrieves data (api.js)
+// 2. something that represents one event (Event.js)
+// 3. something that display data and messages (ui.js)
+// 4. something that coordinates the application (app.js)
 
-  console.log(data);
-}
-
-loadEvents();
+// each module should have one clear reason to change!
+// and have its own responsibility

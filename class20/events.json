@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Signal Fractures",
+    "artist": "Marie Davidson",
+    "genre": "Electronic",
+    "venue": "SAT",
+    "date": "2026-07-25",
+    "price": 28
+  },
+  {
+    "id": 2,
+    "title": "Broken Rhythms",
+    "artist": "Pelada",
+    "genre": "Electronic",
+    "venue": "La Sala Rossa",
+    "date": "2026-07-27",
+    "price": 22
+  },
+  {
+    "id": 3,
+    "title": "Noise Assembly",
+    "artist": "BIG|BRAVE",
+    "genre": "Experimental",
+    "venue": "Casa del Popolo",
+    "date": "2026-08-02",
+    "price": 25
+  },
+  {
+    "id": 4,
+    "title": "Heavy Forms",
+    "artist": "Backxwash",
+    "genre": "Hip-Hop",
+    "venue": "Newspeak",
+    "date": "2026-08-08",
+    "price": 30
+  }
+]
