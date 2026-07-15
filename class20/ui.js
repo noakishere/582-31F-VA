@@ -1,3 +1,6 @@
+// why is DOM reference here? (instead of app.js)
+// This module owns the rendering targets! no other module
+// works with DOMs
 const eventsContainer = document.getElementById("events");
 const statusOutput = document.getElementById("status");
 const countOutput = document.getElementById("event-count");
