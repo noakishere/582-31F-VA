@@ -5,6 +5,10 @@ const eventsContainer = document.getElementById("events");
 const statusOutput = document.getElementById("status");
 const countOutput = document.getElementById("event-count");
 
+/**
+ * Rendering states
+ * A complete interface must show what is happening!
+ */
 // when load events is hit first!
 // loading state
 export function renderLoading() {

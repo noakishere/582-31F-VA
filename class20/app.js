@@ -37,3 +37,56 @@
 
 // each module should have one clear reason to change!
 // and have its own responsibility
+
+// importing the exported functions and class
+import { getEvents } from "./api.js";
+import { Event } from "./Event.js";
+import { renderLoading, renderEmpty, renderError, renderEvents } from "./ui.js";
+
+const loadButton = document.getElementById("load-events");
+const genreFilter = document.getElementById("genre-filter");
+
+// stores the events currently loaded into the application
+let events = [];
+
+async function loadEvents() {
+  renderLoading();
+
+  loadButton.disabled = true;
+  genreFilter.disabled = true;
+
+  try {
+    const rawEvents = await getEvents();
+
+    console.log("Raw API data: ", rawEvents);
+
+    events = rawEvents.map(
+      (item) =>
+        new Event(
+          item.id,
+          item.title,
+          item.artist,
+          item.genre,
+          item.venue,
+          item.date,
+          item.price,
+        ),
+    );
+
+    console.table(events);
+
+    renderEvents(events);
+
+    genreFilter.disabled = false;
+  } catch (error) {
+    console.error("Failed to load events: ", error);
+
+    renderError(error.message);
+  } finally {
+    loadButton.disabled = false;
+  }
+}
+
+loadButton.addEventListener("click", () => {
+  loadEvents();
+});
