@@ -21,10 +21,10 @@ export class FeaturedPerformance {
             time
         );
 
-        this.featured = false;
+        this.featured = Boolean(featured);
     }
 
     get lineupLabel() {
-        return "Regular lineup";
+        return "Featured Performance";
     }
 }

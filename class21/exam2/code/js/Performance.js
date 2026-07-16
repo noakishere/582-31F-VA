@@ -7,6 +7,7 @@ export class Performance {
     this.time = stage;
     this.ticketPrice = String(ticketPrice);
     this.ticketsRemaining = String(ticketsRemaining);
+    this.featured = false;
   }
 
   get formattedPrice() {

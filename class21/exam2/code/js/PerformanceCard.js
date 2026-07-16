@@ -1,11 +1,14 @@
 export class PerformanceCard {
     constructor() {
+        super();
+
+        this._performance = null;
+  
         const shadow =
             this.attachShadow({
                 mode: "open"
             });
 
-        super();
 
         const template =
             document.getElementById(

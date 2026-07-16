@@ -76,50 +76,59 @@ async function loadLineup() {
   } catch (error) {
     console.log("Lineup loaded:", error);
 
-    renderErrors(error);
+    renderErrors(error.message);
   }
 
   loadButton.disabled = true;
 }
 
 function applyFilters() {
-  const searchTerm = searchInput.value;
+  const searchTerm = searchInput.value.trim().toLowerCase();
 
   const stage = stageFilter.value;
 
-  const availableOnly = ticketsFilter.value;
+  const availableOnly = ticketsFilter.checked;
 
-  const featuredOnly = featuredFilter.value;
+  const featuredOnly = featuredFilter.checked;
 
   const sort = sortSelect.value;
 
-  performances = performances.filter((performance) => {
+  let visiblePerformances = performances.filter((performance) => {
     const matchesSearch =
-      performance.title.includes(searchTerm) ||
-      performance.artist.includes(searchTerm);
+      searchTerm === "" ||
+      performance.title.toLowerCase().includes(searchTerm) ||
+      performance.artist.name.toLowerCase().includes(searchTerm);
 
-    const matchesStage = stage === "" || performance.time === stage;
+    const matchesStage = stage === "" || performance.stage === stage;
 
-    const matchesTickets = !availableOnly || performance.ticketsRemaining;
+    const matchesTickets = !availableOnly || performance.hasTickets;
 
-    const matchesFeatured = !featuredOnly || performance instanceof Performance;
+    const matchesFeatured = !featuredOnly || performance.featured;
 
-    return matchesSearch || matchesStage || matchesTickets || matchesFeatured;
+    return matchesSearch && matchesStage && matchesTickets && matchesFeatured;
   });
 
+  visiblePerformances = [...visiblePerformances];
+
+  if (sort === "time-asc") {
+    visiblePerformances.sort((a, b) => a.time.localeCompare(b.time));
+  }
+
   if (sort === "price-asc") {
-    performances.sort((a, b) => a.ticketPrice > b.ticketPrice);
+    visiblePerformances.sort((a, b) => a.ticketPrice - b.ticketPrice);
   }
 
   if (sort === "price-desc") {
-    performances.sort((a, b) => a.ticketPrice < b.ticketPrice);
+    visiblePerformances.sort((a, b) => b.ticketPrice - a.ticketPrice);
   }
 
   if (sort === "artist-asc") {
-    performances.sort((a, b) => a.artist.name - b.artist.name);
+    visiblePerformances.sort((a, b) =>
+      a.artist.name.localeCompare(b.artist.name),
+    );
   }
 
-  renderPerformance(performances);
+  renderPerformances(visiblePerformances);
 }
 
 function resetFilters() {
@@ -129,14 +138,14 @@ function resetFilters() {
   featuredFilter.value = false;
   sortSelect.value = "time-asc";
 
-  applyFilters;
+  applyFilters();
 }
 
-loadButton.addEventListener("click", loadLineup());
+loadButton.addEventListener("click", loadLineup);
 
 searchInput.addEventListener("change", applyFilters);
 
-stageFilter.addEventListener("input", applyFilters());
+stageFilter.addEventListener("input", applyFilters);
 
 ticketsFilter.addEventListener("change", applyFilters);
 
@@ -144,4 +153,4 @@ featuredFilter.addEventListener("change", applyFilters);
 
 sortSelect.addEventListener("change", applyFilters);
 
-resetButton.addEventListener("click", resetFilters());
+resetButton.addEventListener("click", resetFilters);
