@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f3f3;
+  color: #202020;
+}
+
+.site-header {
+  padding: 1.5rem;
+  background: #181818;
+  color: white;
+}
+
+.container {
+  width: min(1150px, 92%);
+  margin: 2rem auto;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  padding: 0.5rem;
+}
+
+.summary {
+  margin-bottom: 1.5rem;
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}

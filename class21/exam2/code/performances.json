@@ -1,0 +1,62 @@
+[
+  {
+    "id": 101,
+    "title": "Signal Fractures",
+    "artistId": 1,
+    "stage": "Main Hall",
+    "time": "20:00",
+    "ticketPrice": 32,
+    "ticketsRemaining": 18,
+    "featured": true
+  },
+  {
+    "id": 102,
+    "title": "Black Sail",
+    "artistId": 2,
+    "stage": "Basement",
+    "time": "21:15",
+    "ticketPrice": 26.5,
+    "ticketsRemaining": 0,
+    "featured": false
+  },
+  {
+    "id": 103,
+    "title": "Nature Morte",
+    "artistId": 3,
+    "stage": "Main Hall",
+    "time": "22:30",
+    "ticketPrice": 29,
+    "ticketsRemaining": 7,
+    "featured": true
+  },
+  {
+    "id": 104,
+    "title": "Movimiento Para Cambio",
+    "artistId": 4,
+    "stage": "Rooftop",
+    "time": "19:30",
+    "ticketPrice": 22,
+    "ticketsRemaining": 24,
+    "featured": false
+  },
+  {
+    "id": 105,
+    "title": "Threshold of Faith",
+    "artistId": 5,
+    "stage": "Basement",
+    "time": "23:30",
+    "ticketPrice": 35.75,
+    "ticketsRemaining": 4,
+    "featured": true
+  },
+  {
+    "id": 106,
+    "title": "Static Echo",
+    "artistId": 1,
+    "stage": "Rooftop",
+    "time": "18:45",
+    "ticketPrice": 20,
+    "ticketsRemaining": 0,
+    "featured": false
+  }
+]

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Underground Festival Lineup</title>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <h1>Underground Festival Lineup</h1>
+    </header>
+
+    <main class="container">
+      <section class="controls">
+        <button id="load-lineup" type="button">Load Lineup</button>
+
+        <label for="search-input"> Search </label>
+
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Performance or artist"
+        />
+
+        <label for="stage-filter"> Stage </label>
+
+        <select id="stage-filter">
+          <option value="">All stages</option>
+
+          <option value="Main Hall">Main Hall</option>
+
+          <option value="Basement">Basement</option>
+
+          <option value="Rooftop">Rooftop</option>
+        </select>
+
+        <label>
+          <input id="tickets-filter" type="checkbox" />
+
+          Available tickets only
+        </label>
+
+        <label>
+          <input id="featured-filter" type="checkbox" />
+
+          Featured only
+        </label>
+
+        <label for="sort-select"> Sort </label>
+
+        <select id="sort-select">
+          <option value="time-asc">Time ascending</option>
+
+          <option value="price-asc">Price ascending</option>
+
+          <option value="price-desc">Price descending</option>
+
+          <option value="artist-asc">Artist A–Z</option>
+        </select>
+
+        <button id="reset-filters" type="button">Reset Filters</button>
+      </section>
+
+      <section class="summary">
+        <p id="status">The festival lineup has not been loaded.</p>
+
+        <p>
+          <strong> Visible performances: </strong>
+
+          <span id="performance-count"> 0 </span>
+        </p>
+
+        <p>
+          <strong> Available tickets: </strong>
+
+          <span id="ticket-count"> 0 </span>
+        </p>
+
+        <p>
+          <strong> Average ticket price: </strong>
+
+          <span id="average-price"> $0.00 </span>
+        </p>
+      </section>
+
+      <section id="performance-list" class="performance-grid"></section>
+    </main>
+
+    <template id="performance-card-template">
+      <style>
+        :host {
+          display: block;
+        }
+
+        .performance-card {
+          height: 100%;
+          padding: 1rem;
+          border: 1px solid #bbb;
+          border-radius: 0.5rem;
+          background: white;
+          box-sizing: border-box;
+        }
+
+        .performance-card.featured {
+          border-width: 3px;
+        }
+
+        .performance-card.sold-out {
+          opacity: 0.65;
+        }
+
+        h2 {
+          margin-top: 0;
+        }
+
+        .lineup-label {
+          font-weight: bold;
+        }
+      </style>
+
+      <article class="performance-card">
+        <h2 class="title"></h2>
+
+        <p class="artist"></p>
+
+        <p class="country"></p>
+
+        <p class="genre"></p>
+
+        <p class="stage"></p>
+
+        <p class="time"></p>
+
+        <p class="price"></p>
+
+        <p class="tickets"></p>
+
+        <p class="lineup-label"></p>
+      </article>
+    </template>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
