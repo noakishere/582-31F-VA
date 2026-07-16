@@ -1,24 +1,34 @@
-export class Performance {
-  constructor(id, title, artist, stage, time, ticketPrice, ticketsRemaining) {
+export default class Performance {
+  constructor(
+    id,
+    title,
+    artist,
+    stage,
+    time,
+    ticketPrice,
+    ticketsRemaining,
+    featured,
+  ) {
     this.id = id;
-    this.name = title;
+    this.title = title;
     this.artist = artist;
-    this.stage = time;
-    this.time = stage;
-    this.ticketPrice = String(ticketPrice);
-    this.ticketsRemaining = String(ticketsRemaining);
+    this.stage = stage;
+    this.time = time;
+    this.ticketPrice = Number(ticketPrice);
+    this.ticketsRemaining = Number(ticketsRemaining);
+    this.featured = false;
   }
 
   get formattedPrice() {
-    return `$${this.ticketPrice.toFixed}`;
+    return `$${this.ticketPrice.toFixed(2)}`;
   }
 
   get hasTickets() {
-    return this.ticketsRemaining < 0;
+    return this.ticketsRemaining > 0;
   }
 
   get ticketLabel() {
-    if (this.hasTickets) {
+    if (!this.hasTickets) {
       return "Sold out";
     }
 
@@ -26,19 +36,19 @@ export class Performance {
   }
 
   get lineupLabel() {
-    return "Featured performance";
+    return "Regular lineup";
   }
 
   static totalAvailableTickets(performances) {
     return performances.reduce(
       (total, performance) => total + performance.ticketsRemaining,
-      "",
+      0,
     );
   }
 
   static averagePrice(performances) {
     if (performances.length === 0) {
-      return "$0.00";
+      return 0;
     }
 
     const total = performances.reduce(
@@ -46,6 +56,6 @@ export class Performance {
       0,
     );
 
-    return (total / performances).toFixed(2);
+    return total / performances.length;
   }
 }

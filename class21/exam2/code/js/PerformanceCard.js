@@ -1,109 +1,70 @@
-export class PerformanceCard {
-    constructor() {
-        const shadow =
-            this.attachShadow({
-                mode: "open"
-            });
+export class PerformanceCard extends HTMLElement {
+  constructor() {
+    super();
 
-        super();
+    this._performance = null;
 
-        const template =
-            document.getElementById(
-                "performance-template"
-            );
+    const shadow = this.attachShadow({
+      mode: "open",
+    });
 
-        shadow.appendChild(
-            template.cloneNode()
-        );
+    const template = document.getElementById("performance-card-template");
+
+    const clone = template.content.cloneNode(true);
+    shadow.appendChild(clone);
+  }
+
+  set performance(value) {
+    this._performance = value;
+    this.render();
+  }
+
+  get performance() {
+    return this._performance;
+  }
+
+  render() {
+    const article = this.shadowRoot.querySelector(".performance-card");
+
+    article.className = "performance-card";
+
+    if (this.performance.featured) {
+      article.classList.add("featured");
     }
 
-    set performance(value) {
-        this.performance = value;
-        this.render;
+    if (!this.performance.hasTickets) {
+      article.classList.add("sold-out");
     }
 
-    get performance() {
-        return this.performance;
-    }
+    this.shadowRoot.querySelector(".title").textContent =
+      this.performance.title;
 
-    render() {
-        const article =
-            document.querySelector(
-                ".performance-card"
-            );
+    this.shadowRoot.querySelector(".artist").textContent =
+      this.performance.artist.displayLabel;
 
-        article.className =
-            "performance-card";
+    this.shadowRoot.querySelector(".country").textContent =
+      this.performance.artist.country;
 
-        if (this.performance.featured) {
-            article.classList.add(
-                "sold-out"
-            );
-        }
+    this.shadowRoot.querySelector(".genre").textContent =
+      this.performance.artist.genre;
 
-        if (!this.performance.hasTickets) {
-            article.classList.add(
-                "featured"
-            );
-        }
+    this.shadowRoot.querySelector(".stage").textContent = `Stage: ${
+      this.performance.stage
+    }`;
 
-        this.shadowRoot
-            .querySelector(".title")
-            .textContent =
-                this.performance.title;
+    this.shadowRoot.querySelector(".time").textContent = `Time: ${
+      this.performance.time
+    }`;
 
-        this.shadowRoot
-            .querySelector(".artist")
-            .textContent =
-                this.performance
-                    .artist.displayLabel();
+    this.shadowRoot.querySelector(".price").textContent =
+      this.performance.formattedPrice;
 
-        this.shadowRoot
-            .querySelector(".country")
-            .textContent =
-                this.performance.artist.genre;
+    this.shadowRoot.querySelector(".tickets").textContent =
+      this.performance.ticketLabel;
 
-        this.shadowRoot
-            .querySelector(".genre")
-            .textContent =
-                this.performance.artist.country;
-
-        this.shadowRoot
-            .querySelector(".stage")
-            .textContent =
-                `Stage: ${
-                    this.performance.time
-                }`;
-
-        this.shadowRoot
-            .querySelector(".time")
-            .textContent =
-                `Time: ${
-                    this.performance.stage
-                }`;
-
-        this.shadowRoot
-            .querySelector(".price")
-            .textContent =
-                this.performance
-                    .formattedPrice();
-
-        this.shadowRoot
-            .querySelector(".tickets")
-            .textContent =
-                this.performance
-                    .ticketLabel();
-
-        this.shadowRoot
-            .querySelector(
-                ".lineup-label"
-            )
-            .textContent =
-                this.performance.lineupLabel;
-    }
+    this.shadowRoot.querySelector(".lineup-label").textContent =
+      this.performance.lineupLabel;
+  }
 }
 
-customElements.define(
-    "performance",
-    PerformanceCard()
-);
+customElements.define("performance-card", PerformanceCard);

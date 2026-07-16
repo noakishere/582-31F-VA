@@ -1,45 +1,45 @@
 import getFestivalData from "./api.js";
 
-import { Artist } from "./Artist.js";
+import Artist from "./Artist.js";
 
-import { Performances } from "./Performance.js";
+import Performance from "./Performance.js";
 
 import { FeaturedPerformance } from "./FeaturedPerformance.js";
 
-import "./PerformanceCards.js";
+import "./PerformanceCard.js";
 
-import { renderLoading, renderErrors, renderPerformance } from "./ui.js";
+import { renderLoading, renderError, renderPerformances } from "./ui.js";
 
-const loadButton = document.getElementById("load-festival");
+const loadButton = document.getElementById("load-lineup");
 
-const searchInput = document.getElementById("search");
+const searchInput = document.getElementById("search-input");
 
 const stageFilter = document.getElementById("stage-filter");
 
-const ticketsFilter = document.getElementById("ticket-filter");
+const ticketsFilter = document.getElementById("tickets-filter");
 
-const featuredFilter = document.getElementById("featured-only");
+const featuredFilter = document.getElementById("featured-filter");
 
-const sortSelect = document.getElementById("sort-filter");
+const sortSelect = document.getElementById("sort-select");
 
-const resetButton = document.getElementById("reset");
+const resetButton = document.getElementById("reset-filters");
 
-let performances;
+let performances = [];
 
 async function loadLineup() {
-  renderLoading;
+  renderLoading();
 
   loadButton.disabled = true;
 
   try {
-    const data = getFestivalData();
+    const data = await getFestivalData();
 
     const artists = data.artists.map(
       (item) => new Artist(item.id, item.name, item.country, item.genre),
     );
 
     performances = data.performances.map((item) => {
-      const artist = artists.filter((artist) => artist.id === item.artistId);
+      const artist = artists.find((artist) => artist.id === item.artistId);
 
       if (item.featured) {
         return new FeaturedPerformance(
@@ -54,7 +54,7 @@ async function loadLineup() {
         );
       }
 
-      return new Performances(
+      return new Performance(
         item.id,
         item.title,
         artist,
@@ -65,7 +65,7 @@ async function loadLineup() {
       );
     });
 
-    renderPerformance(performances);
+    renderPerformances(performances);
 
     searchInput.disabled = false;
     stageFilter.disabled = false;
@@ -76,52 +76,60 @@ async function loadLineup() {
   } catch (error) {
     console.log("Lineup loaded:", error);
 
-    renderErrors(error);
+    renderError(error.message);
   }
 
   loadButton.disabled = true;
 }
 
 function applyFilters() {
-  const searchTerm = searchInput.value;
+  const searchTerm = searchInput.value.trim().toLowerCase();
 
   const stage = stageFilter.value;
 
-  const availableOnly = ticketsFilter.value;
+  const availableOnly = ticketsFilter.checked;
 
-  const featuredOnly = featuredFilter.value;
+  const featuredOnly = featuredFilter.checked;
 
   const sort = sortSelect.value;
 
-  performances = performances.filter((performance) => {
+  let visiblePerformances = performances.filter((performance) => {
     const matchesSearch =
-      performance.title.includes(searchTerm) ||
-      performance.artist.includes(searchTerm);
+      searchTerm === "" ||
+      performance.title.toLowerCase().includes(searchTerm) ||
+      performance.artist.name.toLowerCase().includes(searchTerm);
 
-    const matchesStage = stage === "" || performance.time === stage;
+    const matchesStage = stage === "" || performance.stage === stage;
 
-    const matchesTickets = !availableOnly || performance.ticketsRemaining;
+    const matchesTickets = !availableOnly || performance.hasTickets;
 
-    const matchesFeatured = !featuredOnly || performance instanceof Performance;
+    const matchesFeatured = !featuredOnly || performance.featured;
 
-    return matchesSearch || matchesStage || matchesTickets || matchesFeatured;
+    return matchesSearch && matchesStage && matchesTickets && matchesFeatured;
   });
 
+  visiblePerformances = [...visiblePerformances];
+
+  if (sort === "time-asc") {
+    visiblePerformances.sort((a, b) => a.time.localeCompare(b.time));
+  }
+
   if (sort === "price-asc") {
-    performances.sort((a, b) => a.ticketPrice > b.ticketPrice);
+    visiblePerformances.sort((a, b) => a.ticketPrice - b.ticketPrice);
   }
 
   if (sort === "price-desc") {
-    performances.sort((a, b) => a.ticketPrice < b.ticketPrice);
+    visiblePerformances.sort((a, b) => b.ticketPrice - a.ticketPrice);
   }
 
   if (sort === "artist-asc") {
-    performances.sort((a, b) => a.artist.name - b.artist.name);
+    visiblePerformances.sort((a, b) =>
+      a.artist.name.localeCompare(b.artist.name),
+    );
   }
 
-  renderPerformance(performances);
+  renderPerformances(visiblePerformances);
 }
-
 function resetFilters() {
   searchInput.value = "";
   stageFilter.value = "";
@@ -129,14 +137,14 @@ function resetFilters() {
   featuredFilter.value = false;
   sortSelect.value = "time-asc";
 
-  applyFilters;
+  applyFilters();
 }
 
-loadButton.addEventListener("click", loadLineup());
+loadButton.addEventListener("click", loadLineup);
 
-searchInput.addEventListener("change", applyFilters);
+searchInput.addEventListener("input", applyFilters);
 
-stageFilter.addEventListener("input", applyFilters());
+stageFilter.addEventListener("change", applyFilters);
 
 ticketsFilter.addEventListener("change", applyFilters);
 
@@ -144,4 +152,4 @@ featuredFilter.addEventListener("change", applyFilters);
 
 sortSelect.addEventListener("change", applyFilters);
 
-resetButton.addEventListener("click", resetFilters());
+resetButton.addEventListener("click", resetFilters);
