@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Charli xcx",
+    "country": "United Kingdom",
+    "genre": "Electronic Pop"
+  },
+  {
+    "id": 2,
+    "name": "JPEGMAFIA",
+    "country": "United States",
+    "genre": "Experimental Hip-Hop"
+  },
+  {
+    "id": 3,
+    "name": "Nine Inch Nails",
+    "country": "United States",
+    "genre": "Industrial Rock"
+  },
+  {
+    "id": 4,
+    "name": "The Chemical Brothers",
+    "country": "United Kingdom",
+    "genre": "Electronic"
+  },
+  {
+    "id": 5,
+    "name": "Aphex Twin",
+    "country": "Ireland / United Kingdom",
+    "genre": "Electronic / IDM"
+  }
+]
