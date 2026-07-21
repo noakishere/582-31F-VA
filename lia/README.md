@@ -27,7 +27,6 @@ location or specified coordinates. Here are the requirements:
   - common code is unified, not duplicated
   - appropriate algorithms are used, and coded cleanly
   - web APIs are used when appropriate
-  - code is lint-free (see `bun lint`)
   - no global variables
 
 - Readability [3]
@@ -35,7 +34,6 @@ location or specified coordinates. Here are the requirements:
   - complex or meaningful expressions are named
   - naming is consistent and descriptive
   - comments are used to explain reasoning
-  - code is formatted (see `bun fmt`)
   - documentation is correct
 
 - Version control [2]
